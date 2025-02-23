@@ -17,6 +17,8 @@ If you want to quickly build a GRIS experiment (or feel comfortable with the oth
 - `blank-shapes`: blank canvases with shape objects
 - `blank-audio`: blank canvases with audio objects.[^3]
 
+*These templates can be uploaded to PC Ibex to start experimenting right away!* Each template has extensive comments, where comments either begin with `// COMMENT:` (to provide information about a particular chunk of code) or `// ADD:` (to tell you where you can change the relevant objects/canvases).
+
 
 Note that the `category-text` template can be extended into `category-shapes` or `category-audio` by drawing from the `blank-shapes` and `blank-audio` templates, respectively.
 
