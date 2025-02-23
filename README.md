@@ -6,8 +6,7 @@ If you have any questions or feature requests, please issue a pull request or co
 
 
 ### Installation:
-TBD
-
+The only required dependencies are `numpy` and `pandas`.
 
 ### Use:
 
