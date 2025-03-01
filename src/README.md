@@ -1,7 +1,7 @@
 # Tookit Scripts
 All of the scripts in this directory can be run individually or imported elsewhere. 
 
-##### `canvas.py` 
+### `canvas.py` 
 `canvas.py` helps you customize your canvas objects. Run the following to generate a blank template:
 
 ```
