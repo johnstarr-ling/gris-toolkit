@@ -36,9 +36,11 @@ args = parser.parse_args()
 def colorize(canvas_string, input_hex, output_hex):
     return canvas_string.replace(f".color('{input_hex}')", f".color('{output_hex}')")
 
-with open(args.input_canvas) as inp:
-    canvas = inp.read()
+if __name__ == '__main__':
 
-with open(args.output_name, 'w') as out:
-    out.write(colorize(canvas, args.input_hex, args.output_hex))
+    with open(args.input_canvas) as inp:
+        canvas = inp.read()
+
+    with open(args.output_name, 'w') as out:
+        out.write(colorize(canvas, args.input_hex, args.output_hex))
 
