@@ -14,7 +14,7 @@ Further customization options allow you to specify:
 - the number of columns & rows (within each category), and their respective widths & heights.
 - the maximum values for your boundaries 
 
-For example, running the following will generate a canvas that has 10 total rows and 10 total columns, where there will be 2 columns and 5 rows, and each row (across columns) will alternate between `lightgray` and `gray`.  
+For example, running the following will generate a canvas that has 10 total rows and 10 total columns, where there will be 2 column categories and 5 row categories, and each row (across columns) will alternate between `lightgray` and `gray`.  
 
 ```
 python canvas.py -nr 10 -nc 10 -c 2 5 -s lightgray gray
