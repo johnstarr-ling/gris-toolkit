@@ -21,7 +21,7 @@ If you want to quickly build a GRIS experiment (or feel comfortable with the oth
 *These templates can be uploaded to PC Ibex to start experimenting right away!* Each template has extensive comments, where comments either begin with `// COMMENT:` (to provide information about a particular chunk of code) or `// ADD:` (to tell you where you can change the relevant objects/canvases).
 
 
-Note that the `category-text` template can be extended into `category-shapes` or `category-audio` by drawing from the `blank-shapes` and `blank-audio` templates, respectively.
+Note that the `category-text` template can be extended into `category-shapes` or `category-audio` by drawing from the `blank-shapes` and `blank-audio` templates, respectively; the same can be said for `quartile-text`.
 
 #### Customization with scripts:
 <span style="color:blue">Script customization is under maintenance; accordingly, the information below is not particularly useful at the moment. We will get this to you soon! </span>.
@@ -58,5 +58,5 @@ Individual modifications to GRIS code can be made using the following scripts:
 
 
 [^1]: **GRIS** stands for **G**enerating **R**epresentations **I**n **S**pace.
-[^2]: This demonstration study does not collect any data. 
+[^2]: This demonstration study does not collect any data. You should be able to access the original demo study by clicking the link towards the top of the screen  while taking the experiment. 
 [^3]: Note that audio files cannot be moved in PC Ibex. As such, the `blank-audio` experiment allows participants to play audio files with corresponding text labels ('AAA', 'BBB', etc.), and these (text) labels are the objects that can be moved around. 
