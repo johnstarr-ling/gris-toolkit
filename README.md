@@ -5,12 +5,12 @@
 If you have any questions or feature requests, please issue a pull request or contact me at `jrs673@cornell.edu`.  
 
 
-### Installation:
+## Installation:
 The only required dependencies are `numpy` and `pandas`.
 
-### Use:
+## Use:
 
-#### Quick functionality with templates:
+### Quick functionality with templates:
 If you want to quickly build a GRIS experiment (or feel comfortable with the other tools in this repository), sample templates are provided in the `templates` folder. Templates are currently provided for:
 - `category-text`: categorical canvases with text objects, where categories are visually distinguished through color.
 - `quartile-text`: categorical canvas divided into quarters, where quarters are visually distinguished through color.
@@ -23,10 +23,15 @@ If you want to quickly build a GRIS experiment (or feel comfortable with the oth
 
 Note that the `category-text` template can be extended into `category-shapes` or `category-audio` by drawing from the `blank-shapes` and `blank-audio` templates, respectively; the same can be said for `quartile-text`.
 
-#### Customization with scripts:
-<span style="color:blue">Script customization is under maintenance; accordingly, the information below is not particularly useful at the moment. We will get this to you soon! </span>.
 
-In addition to the provided templates, you can generate your own custom GRIS experiments (or modulate existing ones) using the other scripts in this repository. This toolkit builds GRIS experiments by using Python to write PC Ibex code. Run the following script to build an experiment:
+### Customization with scripts:
+In addition to the provided templates, you can generate your own custom GRIS experiments (or modulate existing ones) using the other scripts in this repository; information about these scripts can be found in the `README` file within the `src` folder. 
+
+<span style="color:blue">*Script customization is under maintenance for the following files:* `main.py`, `objects.py`; accordingly, the information for these files will not be particularly useful at the moment. We will get these files to you soon! </span>.
+
+
+
+Run `main.py` (**Under revision**) to build an experiment:
 
 
 ```
@@ -42,7 +47,7 @@ python main.py -h
 Individual modifications to GRIS code can be made using the following scripts:
 - `canvas.py`: Build and modify your canvas(es).
   - Both categorical and blank canvases are supported.
-- `objects.py`: Format your objects and how they are positioned.
+- `objects.py`: Format your objects and how they are positioned. *Under revision*
   - Objects are placed at the bottom of the screen by default.
 - `colorize.py`: Change the color(s) of a canvas file.
   - Due to possible flexibilities in how canvases are named, the toolkit only supports one color change at a time. As such, multi-color changes will require repeated runs of `colorize.py` on separate canvas files, where each canvas file corresponds to the canvas blocks that you wish to change.
