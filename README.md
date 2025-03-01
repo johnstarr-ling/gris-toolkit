@@ -47,7 +47,7 @@ python main.py -h
 Individual modifications to GRIS code can be made using the following scripts:
 - `canvas.py`: Build and modify your canvas(es).
   - Both categorical and blank canvases are supported.
-- `objects.py`: Format your objects and how they are positioned. **Under revision**
+- `objects.py`: Format your objects and how they are positioned. (**Under revision**)
   - Objects are placed at the bottom of the screen by default.
 - `colorize.py`: Change the color(s) of a canvas file.
   - Due to possible flexibilities in how canvases are named, the toolkit only supports one color change at a time. As such, multi-color changes will require repeated runs of `colorize.py` on separate canvas files, where each canvas file corresponds to the canvas blocks that you wish to change.
