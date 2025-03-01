@@ -13,6 +13,7 @@ The only required dependencies are `numpy` and `pandas`.
 #### Quick functionality with templates:
 If you want to quickly build a GRIS experiment (or feel comfortable with the other tools in this repository), sample templates are provided in the `templates` folder. Templates are currently provided for:
 - `category-text`: categorical canvases with text objects, where categories are visually distinguished through color.
+- `quartile-text`: categorical canvas divided into quarters, where quarters are visually distinguished through color.
 - `blank-text`: blank canvases with text objects
 - `blank-shapes`: blank canvases with shape objects
 - `blank-audio`: blank canvases with audio objects.[^3]
