@@ -1,5 +1,5 @@
 # Tookit Scripts
-All of the scripts in this directory can be run individually or imported elsewhere. 
+All of the scripts in this directory can be individually run or imported. 
 
 ## `canvas.py` 
 `canvas.py` helps you customize your canvas objects. Run the following to generate a blank template:
@@ -38,4 +38,4 @@ python colorize.py -i OLD_COLOR -o NEW_COLOR -c CANVAS_FILE
 
 which will replace the `OLD_COLOR` with the `NEW_COLOR` in the `CANVAS_FILE`.
 
-Note that this script can only replace one color at a time and is intended for quick testing of colors. To replace many colors, I encourage you to generate new sets of canvas objects using `canvas.py`. Depending on the situation, it may be easier to simply use the `Ctrl+F` shortcut on PC Ibex to `Replace All` instances of one color string with another. 
+Note that this script can only replace one color at a time and is intended for quick testing of colors. To replace many colors simultaneously, I encourage you to generate new sets of canvas objects using `canvas.py`. Depending on the situation, it may be easier to simply use the `Ctrl+F` shortcut on PC Ibex to `Replace All` instances of one color string with another. 
