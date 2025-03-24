@@ -25,30 +25,11 @@ Note that the `category-text` template can be extended into `category-shapes` or
 
 
 ### Customization with scripts:
-In addition to the provided templates, you can generate your own custom GRIS experiments (or modulate existing ones) using the other scripts in this repository. 
+We strongly encourage you to build your experiment using one of the provided templates. Changes to objects (text, audio, image) are better done manually on PC Ibex; changes to the canvas are nearly always better using the `canvas.py` script (description below).
 
-<span style="color:blue">*Script customization is under maintenance for the following files:* `main.py`, `objects.py`; accordingly, the information for these files will not be particularly useful at the moment. We will get these files to you soon! </span>.
-
-
-
-Run `main.py` (**Under revision**) to build an experiment:
-
-
-```
-python main.py
-```
-This script will ask you a series of questions to help design your experiment. If you wish to bypass these questions, please include the corresponding variables as keyword arguments. Keyword arguments can be found by running:
-
-```
-python main.py -h
-```
-
-
-Individual modifications to GRIS code can be made using the following scripts:
+Regardless, individual modifications to GRIS code can be made using the following scripts:
 - `canvas.py`: Build and modify your canvas(es).
   - Both categorical and blank canvases are supported. Categorical canvases beyond those presented in the templates (aka more than 1x5 and 2x2) are constructable using this script. 
-- `objects.py`: Format your objects and how they are positioned. (**Under revision**)
-  - Objects are placed at the bottom of the screen by default.
 - `colorize.py`: Change the color(s) of a canvas file.
   - Due to possible flexibilities in how canvases are named, the toolkit only supports one color change at a time. As such, multi-color changes will require repeated runs of `colorize.py` on separate canvas files, where each canvas file corresponds to the canvas blocks that you wish to change.
   - If you are using a blank canvas (and not categories), it is likely faster to use the `Replace All` functionality on PC Ibex by pressing `Ctrl+F`/`Cmd+F` when editing your `main.js`.
