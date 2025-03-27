@@ -78,7 +78,10 @@ if 0 in set(CATEGORIES):
 # Multiple shades should be whole strings 
 if len(COLORS) > 1: 
     COLORS = [''.join(shade) for shade in COLORS]
-    
+
+if (len(COLORS) == 1) and (COLORS[0][0] == '#'):
+    COLORS = [''.join(string) for string in COLORS]
+
 # Ensure subdivisions for both rows and cols 
 if (CATEGORIES[0] != 0) and (NUM_COLS % CATEGORIES[0] != 0):
     raise Exception('Specified number of columns cannot be evenly divided by the number of column categories.')
@@ -114,7 +117,8 @@ def generate_range(midpoint, step, num_X):
     # num_X is the number of rows/columns that we want.
     # Repetitions is the number of canvases we want on each side
     # of the midpoint.
-
+    
+    step = int(step)
     repetitions = num_X/2 
 
     # If repetitions isn't an integer, set the first cell to cross the midpoint.
