@@ -55,6 +55,9 @@ parser.add_argument('-ymax', '--y_maximum', type=int,
                     default=470,
                     help='Bottommost bound of the canvas on the screen.')
 
+parser.add_argument('-a', '--auto_fit', action='store_true',
+                    default=False,
+                    help='Build that automatically scales.')
 
 args = parser.parse_args()
 
@@ -62,14 +65,27 @@ args = parser.parse_args()
 OUTPUT_NAME = args.output_name
 CATEGORIES = args.categories
 COLORS = args.shades 
-NUM_COLS = args.num_columns
-NUM_ROWS = args.num_rows
-WIDTH = args.width 
-HEIGHT = args.height
+NUM_COLS = int(args.num_columns)
+NUM_ROWS = int(args.num_rows)
+WIDTH = int(args.width)
+HEIGHT = int(args.height)
 XMIN = args.x_minimum 
 XMAX = args.x_maximum
 YMIN = args.y_minimum
 YMAX = args.y_maximum
+
+if args.auto_fit:
+    XMIN = 0
+    XMAX = 100
+    YMIN = 0 
+    YMAX = 100
+
+    # Ensure autofit boundaries to reduce scrolling
+    if NUM_COLS*WIDTH >= 100:
+        raise Exception('Width specification too wide for autofit specification; please ensure the total width <100vh.')
+    if NUM_ROWS*HEIGHT >= 100:
+        raise Exception('Height specification too wide for autofit specification; please ensure the total height <100 vh.')
+
 
 # Ensure non-zero amount of categories
 if 0 in set(CATEGORIES):
@@ -79,6 +95,7 @@ if 0 in set(CATEGORIES):
 if len(COLORS) > 1: 
     COLORS = [''.join(shade) for shade in COLORS]
 
+# Single shades should also be one string:
 if (len(COLORS) == 1) and (COLORS[0][0] == '#'):
     COLORS = [''.join(string) for string in COLORS]
 
@@ -100,7 +117,11 @@ if (CATEGORIES[1] != 0) and (NUM_ROWS % CATEGORIES[1] != 0):
 ##### WRITING IBEX CODE 
 # Constructs newCanvas objects
 def make_newCanvas(label, xlocation, ylocation, color, 
-                   width=WIDTH, height=HEIGHT):
+                   width=WIDTH, height=HEIGHT, autofit=False):
+
+    if autofit == True:
+        return f'newCanvas("{label}", "{width}vw", "{height}vh").color("{color}").print("{xlocation}", "{ylocation}"),'
+    
     return f'newCanvas("{label}", {width}, {height}).color("{color}").print({xlocation}, {ylocation}),'
 
 # Constructs getCanvas objects
@@ -255,7 +276,10 @@ if __name__ == '__main__':
         if label[0] != idx1:
             idx1 += 1 
             canvas_string += '\n'
-        canvas_string += make_newCanvas(label, x_positions[label[2]], y_positions[label[3]], color_dict[(label[0], label[1])])
+        if args.auto_fit:
+            canvas_string += make_newCanvas(label, f'{x_positions[label[2]]}vw', f'{y_positions[label[3]]}vh', color_dict[(label[0], label[1])], autofit=True)
+        else:
+            canvas_string += make_newCanvas(label, x_positions[label[2]], y_positions[label[3]], color_dict[(label[0], label[1])])
 
     # Adding getCanvas Header
     canvas_string += '\n\n\n\n\n############### GET CANVAS ###############\n'
