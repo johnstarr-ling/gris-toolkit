@@ -13,6 +13,7 @@ Further customization options allow you to specify:
 - the colors of each category.
 - the number of columns & rows (within each category), and their respective widths & heights.
 - the maximum values for your boundaries 
+- autofit the canvas according to the screen dimensions of your device. 
 
 For example, running the following will generate a canvas that has 10 total rows and 10 total columns, where there will be 2 column categories and 5 row categories, and each row (across columns) will alternate between `lightgray` and `gray`.  
 
