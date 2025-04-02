@@ -9,35 +9,47 @@ import ast
 # === GENERAL === 
 #########################
 
-def pairwise_distance(coordinate1, coordinate2):
+def pairwise_distance(coordinate1, coordinate2, categorical=False):
     """
-    SOMETHING.
+    Calculate the pairwise distance between two coordinates. 
 
     Parameters:
-    - SOMETHING.
+    - coordinate1 (tuple of ints): A coordinate with dimensions (x, y) or (x_cat, y_cat, x, y).
+    - coordinate2 (tuple of ints): A coordinate with dimensions (x, y) or (x_cat, y_cat, x, y).
 
     Returns:
-    - SOMETHING
+    - float: the Euclidean distance between coordinate1 and coordinate2.
     """
 
-    return math.dist([coordinate1[-2], coordinate1[-1]], 
-                     [coordinate2[-2], coordinate2[-1]]) 
+    # Counting only the first two numbers (aka differences in categories)
+    if categorical == False:
+        return math.dist([coordinate1[-2], coordinate1[-1]], 
+                        [coordinate2[-2], coordinate2[-1]]) 
+    
+    # Counting only the last two numbers (aka positional differences only)
+    return math.dist([coordinate1[0], coordinate1[1],
+                     [coordinate2[0], coordinate2[1]]])
 
 
 def compute_action_times(df, participant_col="MD5.hash.of.participant.s.IP.address",
                          item_col="Order.number.of.item"):
     """
-    SOMETHING.
+    For each trial, compute:
+    - the order of events within a trial                (EventIndex)
+    - how long it took to complete the current event    (TimeSinceLastEvent)
+    - how long the full trial took for this participant (TotalItemTime)
 
     Note that this function has been optimized with pandas,
-    at the cost of some readability. 
-    I have added comments where appropriate.
+    at the cost of some readability. I have added comments where appropriate.
 
     Parameters:
-    - SOMETHING.
+    - df (pd.DataFrame): Input dataframe.
+    - participant_col (str): Name for column that defines participant. 
+    - item_col (str): Name for column that defines item.
 
     Returns:
-    - SOMETHING.
+    - df (pd.DataFrame): Output dataframe with the three statistics mentioned above:
+                         (EventIndex, TimeSinceLastEvent, TotalItemTime)
     """
         
     # Required columns.
@@ -89,37 +101,49 @@ def compute_action_times(df, participant_col="MD5.hash.of.participant.s.IP.addre
 
 def clean_string(line):
     """
-    SOMETHING.
+    Fix various formatting complications with the `Final` graphs.
 
     Parameters:
-    - SOMETHING.
+    - line (str): Value from the `Final` row for a trial.
 
     Returns:
-    - SOMETHING.
+    - obj_list (list of tuples): Indexable tuples of objects and their locations.
     """
 
+    # Fix comma replacement
     line = line.replace('%2C', ',')
-    item_and_location = line.split(';')
+
+    # Separate objects from one another
+    obj_and_location = line.split(';')
     
-    item_list = []
-    for item_location in item_and_location:
-        item, location = item_location.split(':')
+    # Prepare object-location container
+    obj_list = []
+
+    # Go through each object-location pair:
+    for obj_location in obj_and_location:
+        obj, location = obj_location.split(':')
+
+        # Get the location and evaluate it as a tuple (not a string)
         location = ast.literal_eval(location)
 
-        item_list.append(tuple((item, location)))
+        # Add cleaned item to the object-location container
+        obj_list.append(tuple((obj, location)))
 
-    return item_list
+    return obj_list
 
 
 def expand_graphs(df):
     """
-    SOMETHING.
+    Explode the dataframe (in a good way) by giving
+    each object-location pair its own row (to facilitate
+    downstream calculations).
 
     Parameters:
-    - SOMETHING.
+    - df (pd.DataFrame): Input dataframe.
 
     Returns:
-    - SOMETHING.
+    - output (pd.DataFrame): Output dataframe rows that have been
+                             exploded by obj-location values.
     """
 
     # Graphs are lists of objects and their locations. 
@@ -150,6 +174,7 @@ def compute_pairwise_distances(df, group_cols, location_col='location', object_c
     - group_cols (list of str): Columns to group by.
     - location_col (str): Name of the coordinate column (expects vectors).
     - object_col (str): Name of the object identifier column.
+    - categorical (bool): Determining categorical differences (True) or not (False).
 
     Returns:
     - pd.DataFrame: Compact pairwise comparison results.
@@ -179,7 +204,7 @@ def compute_pairwise_distances(df, group_cols, location_col='location', object_c
             two_coords = locations[:, -2:]  # Use only last two coordinates for gradient 
         else:
             two_coords = locations[:, :2]   # Use only first two coordinates for categorical
-            
+
         object_ids = group[object_col].values
         metadata = group.drop(columns=[location_col, object_col])
 
