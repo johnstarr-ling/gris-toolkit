@@ -1,0 +1,27 @@
+Participant,Item,EventIndex,EventTime,TimeSinceLastEvent,TotalItemTime,Results.reception.time,Controller.name,Inner.element.number,Label,Latin.Square.Group,PennElementType,PennElementName,Parameter,Value,item,Comments
+8625c054d78abdfb4dce4fa7872cfd0e,1,0,1743629433033,0.0,8479,1743629442,PennController,0,demo,,PennController,1,_Trial_,Start,item1,
+8625c054d78abdfb4dce4fa7872cfd0e,1,1,1743629434034,1001.0,8479,1743629442,PennController,0,demo,,DragDrop,pt-1,Drag,cat,item1,Dropped on (5%2C 0%2C 0%2C 0)
+8625c054d78abdfb4dce4fa7872cfd0e,1,2,1743629434798,764.0,8479,1743629442,PennController,0,demo,,DragDrop,pt-1,Drop,(5%2C 0%2C 0%2C 0),item1,Dopped cat
+8625c054d78abdfb4dce4fa7872cfd0e,1,3,1743629435653,855.0,8479,1743629442,PennController,0,demo,,DragDrop,pt-1,Drag,snake,item1,Dropped on (3%2C 0%2C 0%2C 1)
+8625c054d78abdfb4dce4fa7872cfd0e,1,4,1743629436289,636.0,8479,1743629442,PennController,0,demo,,DragDrop,pt-1,Drop,(3%2C 0%2C 0%2C 1),item1,Dopped snake
+8625c054d78abdfb4dce4fa7872cfd0e,1,5,1743629437399,1110.0,8479,1743629442,PennController,0,demo,,DragDrop,pt-1,Drag,dog,item1,Dropped on (2%2C 0%2C 1%2C 1)
+8625c054d78abdfb4dce4fa7872cfd0e,1,6,1743629437939,540.0,8479,1743629442,PennController,0,demo,,DragDrop,pt-1,Drop,(2%2C 0%2C 1%2C 1),item1,Dopped dog
+8625c054d78abdfb4dce4fa7872cfd0e,1,7,1743629438849,910.0,8479,1743629442,PennController,0,demo,,DragDrop,pt-1,Drag,hamster,item1,Not dropped
+8625c054d78abdfb4dce4fa7872cfd0e,1,8,1743629440177,1328.0,8479,1743629442,PennController,0,demo,,DragDrop,pt-1,Drag,hamster,item1,Dropped on (1%2C 0%2C 0%2C 1)
+8625c054d78abdfb4dce4fa7872cfd0e,1,9,1743629440660,483.0,8479,1743629442,PennController,0,demo,,DragDrop,pt-1,Drop,(1%2C 0%2C 0%2C 1),item1,Dopped hamster
+8625c054d78abdfb4dce4fa7872cfd0e,1,10,1743629441512,852.0,8479,1743629442,PennController,0,demo,,DragDrop,pt-1,Final,cat:(5%2C 0%2C 0%2C 0);dog:(2%2C 0%2C 1%2C 1);snake:(3%2C 0%2C 0%2C 1);hamster:(1%2C 0%2C 0%2C 1),item1,
+8625c054d78abdfb4dce4fa7872cfd0e,1,11,1743629441512,0.0,8479,1743629442,PennController,0,demo,,PennController,1,_Trial_,End,item1,
+8625c054d78abdfb4dce4fa7872cfd0e,2,0,1743629417343,0.0,15688,1743629442,PennController,0,demo,,PennController,2,_Trial_,Start,item2,
+8625c054d78abdfb4dce4fa7872cfd0e,2,1,1743629418701,1358.0,15688,1743629442,PennController,0,demo,,DragDrop,pt-1,Drag,sprite,item2,Dropped on (3%2C 0%2C 0%2C 0)
+8625c054d78abdfb4dce4fa7872cfd0e,2,2,1743629419633,932.0,15688,1743629442,PennController,0,demo,,DragDrop,pt-1,Drop,(3%2C 0%2C 0%2C 0),item2,Dopped sprite
+8625c054d78abdfb4dce4fa7872cfd0e,2,3,1743629421361,1728.0,15688,1743629442,PennController,0,demo,,DragDrop,pt-1,Drag,pepsi,item2,Dropped on (5%2C 0%2C 1%2C 1)
+8625c054d78abdfb4dce4fa7872cfd0e,2,4,1743629422244,883.0,15688,1743629442,PennController,0,demo,,DragDrop,pt-1,Drop,(5%2C 0%2C 1%2C 1),item2,Dopped pepsi
+8625c054d78abdfb4dce4fa7872cfd0e,2,5,1743629423300,1056.0,15688,1743629442,PennController,0,demo,,DragDrop,pt-1,Drag,dr. pepper,item2,Dropped on (1%2C 0%2C 1%2C 0)
+8625c054d78abdfb4dce4fa7872cfd0e,2,6,1743629423973,673.0,15688,1743629442,PennController,0,demo,,DragDrop,pt-1,Drop,(1%2C 0%2C 1%2C 0),item2,Dopped dr. pepper
+8625c054d78abdfb4dce4fa7872cfd0e,2,7,1743629424961,988.0,15688,1743629442,PennController,0,demo,,DragDrop,pt-1,Drag,fanta,item2,Not dropped
+8625c054d78abdfb4dce4fa7872cfd0e,2,8,1743629428928,3967.0,15688,1743629442,PennController,0,demo,,DragDrop,pt-1,Drag,fanta,item2,Dropped on (3%2C 0%2C 1%2C 1)
+8625c054d78abdfb4dce4fa7872cfd0e,2,9,1743629429826,898.0,15688,1743629442,PennController,0,demo,,DragDrop,pt-1,Drop,(3%2C 0%2C 1%2C 1),item2,Dopped fanta
+8625c054d78abdfb4dce4fa7872cfd0e,2,10,1743629430890,1064.0,15688,1743629442,PennController,0,demo,,DragDrop,pt-1,Drag,fanta,item2,Dropped on (2%2C 0%2C 1%2C 0)
+8625c054d78abdfb4dce4fa7872cfd0e,2,11,1743629431459,569.0,15688,1743629442,PennController,0,demo,,DragDrop,pt-1,Drop,(2%2C 0%2C 1%2C 0),item2,Dopped fanta
+8625c054d78abdfb4dce4fa7872cfd0e,2,12,1743629433030,1571.0,15688,1743629442,PennController,0,demo,,DragDrop,pt-1,Final,sprite:(3%2C 0%2C 0%2C 0);pepsi:(5%2C 0%2C 1%2C 1);fanta:(2%2C 0%2C 1%2C 0);dr. pepper:(1%2C 0%2C 1%2C 0),item2,
+8625c054d78abdfb4dce4fa7872cfd0e,2,13,1743629433031,1.0,15688,1743629442,PennController,0,demo,,PennController,2,_Trial_,End,item2,

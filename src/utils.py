@@ -1,0 +1,230 @@
+import numpy as np 
+import pandas as pd 
+import re 
+import math
+import ast 
+
+
+#########################
+# === GENERAL === 
+#########################
+
+def pairwise_distance(coordinate1, coordinate2):
+    """
+    SOMETHING.
+
+    Parameters:
+    - SOMETHING.
+
+    Returns:
+    - SOMETHING
+    """
+
+    return math.dist([coordinate1[-2], coordinate1[-1]], 
+                     [coordinate2[-2], coordinate2[-1]]) 
+
+
+def compute_action_times(df, participant_col="MD5.hash.of.participant.s.IP.address",
+                         item_col="Order.number.of.item"):
+    """
+    SOMETHING.
+
+    Note that this function has been optimized with pandas,
+    at the cost of some readability. 
+    I have added comments where appropriate.
+
+    Parameters:
+    - SOMETHING.
+
+    Returns:
+    - SOMETHING.
+    """
+        
+    # Required columns.
+    required_cols = [
+        "MD5.hash.of.participant.s.IP.address", 
+        "Order.number.of.item", 
+        "EventTime"
+    ]
+
+    # Check for required columns.
+    for col in required_cols:
+        if col not in df.columns:
+            raise ValueError(f"Missing required column: {col}")
+
+    # Sort data.
+    df = df.sort_values(by=[participant_col, item_col, "EventTime"]).reset_index(drop=True)
+
+    # Compute time since last event.
+    df['TimeSinceLastEvent'] = df.groupby([participant_col, item_col])['EventTime'].diff().fillna(0)
+
+    # Compute total item time for each group.
+    first_event = df.groupby([participant_col, item_col])['EventTime'].transform('first')
+    last_event = df.groupby([participant_col, item_col])['EventTime'].transform('last')
+    df['TotalItemTime'] = last_event - first_event
+
+    # Create EventIndex within each group.
+    df['EventIndex'] = df.groupby([participant_col, item_col]).cumcount()
+
+    # Rename columns to match output format.
+    df = df.rename(columns={
+        participant_col: "Participant",
+        item_col: "Item"
+    })
+
+    # Reorder columns: move the new ones to the front.
+    reordered_cols = (
+        ["Participant", "Item", "EventIndex", "EventTime", "TimeSinceLastEvent", "TotalItemTime"]
+        + [col for col in df.columns if col not in {"Participant", "Item", "EventIndex", "EventTime", "TimeSinceLastEvent", "TotalItemTime"}]
+    )
+
+    return df[reordered_cols]
+
+
+
+
+#########################
+# === LINE FUNCTIONS === 
+#########################
+
+def clean_string(line):
+    """
+    SOMETHING.
+
+    Parameters:
+    - SOMETHING.
+
+    Returns:
+    - SOMETHING.
+    """
+
+    line = line.replace('%2C', ',')
+    item_and_location = line.split(';')
+    
+    item_list = []
+    for item_location in item_and_location:
+        item, location = item_location.split(':')
+        location = ast.literal_eval(location)
+
+        item_list.append(tuple((item, location)))
+
+    return item_list
+
+
+def expand_graphs(df):
+    """
+    SOMETHING.
+
+    Parameters:
+    - SOMETHING.
+
+    Returns:
+    - SOMETHING.
+    """
+
+    # Graphs are lists of objects and their locations. 
+    # Explode this list (but keep the columns). 
+    output = df.explode('final_graphs')
+    
+    # Extract the object into its own column.
+    output['object'] = output['final_graphs'].apply(lambda x: x[0])
+
+    # Extract the location into its own column.
+    output['location'] = output['final_graphs'].apply(lambda x: x[1])
+
+    return output
+
+
+def compute_pairwise_distances(df, group_cols, location_col='location', object_col='object',
+                               categorical=False):
+    """
+    Compute pairwise distances between rows within each group using only the last two
+    dimensions of the coordinate vectors (as per the custom distance function).
+
+    Given that we are looking at all pairwise distances between all objects,
+    this function has been optimized (using numpy) at the cost of some
+    readability. I have added comments where appropriate.
+
+    Parameters:
+    - df (pd.DataFrame): Input dataframe.
+    - group_cols (list of str): Columns to group by.
+    - location_col (str): Name of the coordinate column (expects vectors).
+    - object_col (str): Name of the object identifier column.
+
+    Returns:
+    - pd.DataFrame: Compact pairwise comparison results.
+    """
+    
+    # Make copy of df.
+    df = df.copy()
+
+    # Prepare results container (a list of dfs).
+    all_results = []
+
+    # Begin groupby.
+    for _, group in df.groupby(group_cols):
+        group = group.reset_index(drop=True)
+        
+        # Find length of each trial for each participant.
+        num_rows = len(group)
+
+        # Edge case (should not be a problem with normal experiments).
+        if num_rows < 2:
+            continue
+
+        # Extract relevant data
+        locations = np.stack(group[location_col].values)
+
+        if categorical == False:
+            two_coords = locations[:, -2:]  # Use only last two coordinates for gradient 
+        else:
+            two_coords = locations[:, :2]   # Use only first two coordinates for categorical
+            
+        object_ids = group[object_col].values
+        metadata = group.drop(columns=[location_col, object_col])
+
+        # Create pairwise index arrays, without duplicate pairs.
+        # (aka: including sent1~sent2, sent2~sent3, sent1~sent3, AND
+        #       excluding sent2~sent1, sent3~sent2, etc.)
+        idx1 = np.repeat(np.arange(num_rows), num_rows)
+        idx2 = np.tile(np.arange(num_rows), num_rows)
+        mask = idx1 < idx2
+
+        idx1 = idx1[mask]
+        idx2 = idx2[mask]
+
+        # Some GRIS experimenters may only use two-part coordinates, 
+        # so this ensures that the proper distances are being calculated.
+        coords1 = two_coords[idx1]
+        coords2 = two_coords[idx2]
+
+        # Compute Euclidean distance between each coordinate pair.
+        deltas = coords1 - coords2
+        distances = np.sqrt((deltas ** 2).sum(axis=1))
+
+        # Collect results.
+        metadata1 = metadata.iloc[idx1].reset_index(drop=True)
+        obj1 = object_ids[idx1]
+        obj2 = object_ids[idx2]
+        loc2 = group[location_col].iloc[idx2].values
+
+        # Build output dataframe.
+        result_df = metadata1.copy()
+        result_df[object_col] = obj1
+        result_df[f'{object_col}_2'] = obj2
+        result_df[f'{location_col}_2'] = loc2
+        result_df['distance'] = distances
+
+        # Add results to container.
+        all_results.append(result_df)
+
+    return pd.concat(all_results, ignore_index=True)
+
+
+
+
+#########################
+# === DRAW FUNCTIONS === 
+#########################
+
+# Not yet implemented.
