@@ -1,8 +1,10 @@
 # GRIS Toolkit
 
-  Welcome to the GRIS toolkit! GRIS[^1] is an experimental paradigm where participants drag and drop objects on canvases; three demonstrations of GRIS experiments can be found at [this link](https://farm.pcibex.net/r/dxyQEL/).[^2] This open-source toolkit builds GRIS experiments for [PC Ibex](https://doc.pcibex.net/). Note that some experience with PC Ibex is strongly encouraged (and, arguably, expected), as this toolkit focuses on building GRIS canvases/objects and does not cover all possible customization options available on PC Ibex.
+Welcome to the GRIS toolkit! GRIS[^1] is an experimental paradigm where participants drag and drop objects on canvases; three demonstrations of GRIS experiments can be found at [this link](https://farm.pcibex.net/r/dxyQEL/).[^2] This open-source toolkit builds GRIS experiments for [PC Ibex](https://doc.pcibex.net/). Note that some experience with PC Ibex is strongly encouraged (and, arguably, expected), as this toolkit focuses on building GRIS canvases/objects and does not cover all possible customization options available on PC Ibex.
 
-If you have any questions or feature requests, please issue a pull request or contact me at `jrs673@cornell.edu`.  
+If you have any questions or feature requests, please issue a pull request or contact me at `jrs673@cornell.edu`. Some projects that are currently in development: 
+- an interactive GUI where you can draw your canvas (in a gridded, spreadsheet-like environment) and then run a quick script to build that canvas for PC Ibex.
+- additional templates (particularly some that automatically fit to the size of the screen you are working with)
 
 
 ## Installation:
@@ -38,7 +40,50 @@ Regardless, individual modifications to GRIS code can be made using the followin
 More information about these scripts can be found in the `README` file within the `src` folder. 
 
 
+## Standard Pipeline:
+1. Build your GRIS from a template or using `canvas.py` | [gris-toolkit!]
+2. Modify the PC Ibex script according to your desiderate | [on your own!]
+3. Run the experiment and download the data | [on your own!]
+4. Process the raw data using R | [gris toolkit!]
+5. Build your data pipeline to calculate event times and object relations | [gris toolkit! (if you're using Python)]
+6. Align your cleaned data with your conditions | [on your own!]
+7. Find some amazing results! | [on your own!]
 
+
+## Tips and Tricks:
+- To eliminate the ability to scroll in a trial (a useful feature when running GRIS on mobile devices), ensure that your design fits within 0-100(vw/vh), and then paste the following code into the relevant `Trial` code blocks:
+```
+// Stop scrolling!
+    newFunction(() => {
+    const preventScroll = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+    };
+
+    // Disable scrolling via CSS
+    document.documentElement.style.overflow = 'hidden';
+    document.documentElement.style.height = '100vh';
+    document.documentElement.style.width = '100vw';
+    document.documentElement.style.margin = '0';
+    document.documentElement.style.padding = '0';
+
+    document.body.style.overflow = 'hidden';
+    document.body.style.height = '100vh';
+    document.body.style.width = '100vw';
+    document.body.style.margin = '0';
+    document.body.style.padding = '0';
+
+    // Scroll to top
+    window.scrollTo(0, 0);
+
+    // Disable touchmove (mobile scroll)
+    document.addEventListener('touchmove', preventScroll, { passive: false });
+
+    // Optional: prevent gestures
+    document.addEventListener('gesturestart', preventScroll, { passive: false });
+}).call(),
+```
 
 
 
