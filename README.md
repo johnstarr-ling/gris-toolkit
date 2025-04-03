@@ -2,15 +2,21 @@
 
 Welcome to the GRIS toolkit! GRIS[^1] is an experimental paradigm where participants drag and drop objects on canvases; three demonstrations of GRIS experiments can be found at [this link](https://farm.pcibex.net/r/dxyQEL/).[^2] This open-source toolkit builds GRIS experiments for [PC Ibex](https://doc.pcibex.net/). Note that some experience with PC Ibex is strongly encouraged (and, arguably, expected), as this toolkit focuses on building GRIS canvases/objects and does not cover all possible customization options available on PC Ibex.
 
+#### Table of Contents <a name="toc"></a>:
+- [Installation](#installation)
+- [Use](#use)
+- [Standard Pipeline](#pipeline)
+- [Tips & Tricks](#tat)
+
 If you have any questions or feature requests, please issue a pull request or contact me at `jrs673@cornell.edu`. Some projects that are currently in development: 
 - an interactive GUI where you can draw your canvas (in a gridded, spreadsheet-like environment) and then run a quick script to build that canvas for PC Ibex.
 - additional templates (particularly some that automatically fit to the size of the screen you are working with)
 
 
-## Installation:
+## Installation: <a name="installation"></a> | [back to top](#toc)
 The only required dependencies are `numpy` and `pandas`.
 
-## Use:
+## Use: <a name="use"></a> | [back to top](#toc)
 
 ### Quick functionality with templates:
 If you want to quickly build a GRIS experiment (or feel comfortable with the other tools in this repository), sample templates are provided in the `templates` folder. Templates are currently provided for:
@@ -40,7 +46,7 @@ Regardless, individual modifications to GRIS code can be made using the followin
 More information about these scripts can be found in the `README` file within the `src` folder. 
 
 
-## Standard Pipeline:
+## Standard Pipeline: <a name="pipeline"></a> | [back to top](#toc)
 1. Build your GRIS from a template or using `canvas.py` | [gris-toolkit!]
 2. Modify the PC Ibex script according to your desiderata | [on your own!]
 3. Run the experiment and download the data | [on your own!]
@@ -50,7 +56,7 @@ More information about these scripts can be found in the `README` file within th
 7. Find some amazing results! | [on your own!]
 
 
-## Tips and Tricks:
+## Tips and Tricks:  <a name="tat"></a> | [back to top](#toc)
 - To eliminate the ability to scroll in a trial (a useful feature when running GRIS on mobile devices), ensure that your design fits within 0-100(vw/vh), and then paste the following code into the relevant `Trial` code blocks:
 ```
 // Stop scrolling!
