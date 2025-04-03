@@ -42,7 +42,7 @@ More information about these scripts can be found in the `README` file within th
 
 ## Standard Pipeline:
 1. Build your GRIS from a template or using `canvas.py` | [gris-toolkit!]
-2. Modify the PC Ibex script according to your desiderate | [on your own!]
+2. Modify the PC Ibex script according to your desiderata | [on your own!]
 3. Run the experiment and download the data | [on your own!]
 4. Process the raw data using R | [gris toolkit!]
 5. Build your data pipeline to calculate event times and object relations | [gris toolkit! (if you're using Python)]

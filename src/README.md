@@ -44,7 +44,7 @@ Note that this script can only replace one color at a time and is intended for q
 
 ## **Data Processing**
 ### `process_raw_data.R`
-`process_raw_data.R` has a pretty informative title: run this script (which has been taken from the PC Ibex website) to process your data. I use RStudio. Note that you will need to specify the file name and location in the script itself. *This should be the first thing you do once you've downloaded your results file.* 
+`process_raw_data.R` has a pretty informative title: run this script (which has been taken from the PC Ibex website) to process your data. I use RStudio. Note that you will need to specify the file name and location in the script itself; you will also need to set your session to the source file location. *This should be the first thing you do once you've downloaded your results file.* 
 
 ### `utils.py`
 `utils.py` has a number of handy functions that help you process your data. The most important ones are:
@@ -61,6 +61,14 @@ The functions in `utils.py` are, for the most part, quite human readable -- I've
 ### `visualizer.py`
 `visualizer.py` helps you construct 2D or 3D graphs of your similarity data; examples of some visuals created using the `demo-2-distances.csv` file can be found in the `outputs` folder. `visualizer.py` currently supports 2D, 3D (static), and 3D (animated gif) visuals. *This visualizer is still under development, but please let us know if there are some features that you would like to see.*
 
+The way to run the visualizer is:
+```
+python visualizer.py -i YOUR_FILE -t GRAPH_TITLE -g GRAPH_TYPE(S)
+```
+though you can see the full list of specifications with:
+```
+python visualizer.py -h
+```
 
 ### Folders 
 - `data` has some sample canvases, along with the data needed to run the relevant sample pipelines in `pipeline.ipynb`. 
