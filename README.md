@@ -2,6 +2,9 @@
 
 Welcome to the GRIS toolkit! GRIS[^1] is an experimental paradigm where participants drag and drop objects on canvases; three demonstrations of GRIS experiments can be found at [this link](https://farm.pcibex.net/r/dxyQEL/).[^2] This open-source toolkit builds GRIS experiments for [PC Ibex](https://doc.pcibex.net/). Note that some experience with PC Ibex is strongly encouraged (and, arguably, expected), as this toolkit focuses on building GRIS canvases/objects and does not cover all possible customization options available on PC Ibex.
 
+![alt text](https://github.com/johnstarr-ling/gris-toolkit/blob/main/src/outputs/image_3D.gif "Sample visualization of GRIS data, where distance ~ similarity.")
+
+
 #### Table of Contents <a name="toc"></a>:
 - [Installation](#installation)
 - [Use](#use)
