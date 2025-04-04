@@ -102,7 +102,7 @@ More information about these scripts can be found in the `README` file within th
 ## Citation: <a name="citation"></a> | [back to top](#toc)
 If you use GRIS, please use the following citation:
 ```
-Starr, J.R., Winship, A, & van Schijndel, M. (2025). Generating Representations in Space with GRIS.
+Starr, J.R., Winship, A, & van Schijndel, M. (2025). Generating Representations in Space with GRIS. Proceedings of the 47th Annual Conference of the Cognitive Science Society.
 ```
 
 
