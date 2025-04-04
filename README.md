@@ -1,6 +1,8 @@
 # GRIS Toolkit
 
-Welcome to the GRIS toolkit! GRIS[^1] is an experimental paradigm where participants drag and drop objects on canvases; three demonstrations of GRIS experiments can be found at [this link](https://farm.pcibex.net/r/dxyQEL/).[^2] This open-source toolkit builds GRIS experiments for [PC Ibex](https://doc.pcibex.net/). Note that some experience with PC Ibex is strongly encouraged (and, arguably, expected), as this toolkit focuses on building GRIS canvases/objects and does not cover all possible customization options available on PC Ibex.
+Welcome to the GRIS toolkit! GRIS[^1] is an experimental paradigm where participants drag and drop objects on canvases, where the space between objects denotes some meaningful relationship(s). Following the collection of data, researchers have access to the incremental drag-and-drop events (which object moved, when it moved, and where it moved to) and the final locations of all objects on canvases, supporting a number of experimental designs and questions. Three demonstrations of GRIS experiments can be found at [this link](https://farm.pcibex.net/r/dxyQEL/).[^2] 
+
+This open-source toolkit builds GRIS experiments for [PC Ibex](https://doc.pcibex.net/). Note that some experience with PC Ibex is strongly encouraged (and, arguably, expected), as this toolkit focuses on building GRIS canvases/objects and does not cover all possible customization options available on PC Ibex.
 
 ![alt text](https://github.com/johnstarr-ling/gris-toolkit/blob/main/src/outputs/image_3D.gif "Sample visualization of GRIS data, where distance ~ similarity.")
 
@@ -10,6 +12,7 @@ Welcome to the GRIS toolkit! GRIS[^1] is an experimental paradigm where particip
 - [Use](#use)
 - [Standard Pipeline](#pipeline)
 - [Tips & Tricks](#tat)
+- [Citation](#citation)
 
 If you have any questions or feature requests, please issue a pull request or contact me at `jrs673@cornell.edu`. Some projects that are currently in development: 
 - an interactive GUI where you can draw your canvas (in a gridded, spreadsheet-like environment) and then run a quick script to build that canvas for PC Ibex.
@@ -96,8 +99,13 @@ More information about these scripts can be found in the `README` file within th
 
 
 
+## Citation: <a name="citation"></a> | [back to top](#toc)
+If you use GRIS, please use the following citation:
+```
+Starr, J.R., Winship, A, & van Schijndel, M. (2025). Generating Representations in Space with GRIS.
+```
 
 
-[^1]: **GRIS** stands for **G**enerating **R**epresentations **I**n **S**pace.
+[^1]: **GRIS** stands for **G**enerating **R**epresentations **I**n **S**pace. GRIS was originally modeled to approximate human representational spaces in a way that is comparable to vector representations of language constructed by modern computational models of language, such as LLMs. According to [Yoav Artzi](https://yoavartzi.com/), you can think of GRIS as "t-SNE for humans!".
 [^2]: This demonstration study does not collect any data. You should be able to access the original demo study by clicking the link towards the top of the screen  while taking the experiment. 
-[^3]: Note that audio files cannot be moved in PC Ibex. As such, the `blank-audio` experiment allows participants to play audio files with corresponding text labels ('AAA', 'BBB', etc.), and these (text) labels are the objects that can be moved around. 
+[^3]: Note that audio files cannot be moved in PC Ibex (to our knowledge). As such, the `blank-audio` experiment allows participants to play audio files with corresponding text labels ('AAA', 'BBB', etc.), and these (text) labels are the objects that can be moved around. 
