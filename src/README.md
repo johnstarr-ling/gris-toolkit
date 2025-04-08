@@ -52,6 +52,7 @@ Note that this script can only replace one color at a time and is intended for q
 - `clean_string`: Processes `Final` graphs into a more usable format.
 - `expand_graphs`: Expands a trial to multiple rows, where each row reflects an object and its location.
 - `compute_pairwise_distances`: Calculates the distance between object X and object Y for all possible combinations of objects (without repeats, aka comparing X with Y counts as comparing Y with X) within each trial. 
+- `z_score`: Computes the z_score of a measurement based on some group(s).
 
 The functions in `utils.py` are, for the most part, quite human readable -- I've tried my best to comment as much as possible and use informative variable names. That being said, I've also spent some time trying to optimize `compute_action_times` and `compute_pairwise_distances`, as both of these functions have to handle a LOT of data concurrently. As such, these functions may be a little less readable. 
 
