@@ -92,6 +92,20 @@ def compute_action_times(df, participant_col="MD5.hash.of.participant.s.IP.addre
 
     return df[reordered_cols]
 
+def z_score(df, groupby_col = ['Participant'], measure_col='distance'):
+    """
+    Z-score your measurements by group(s).
+
+    Parameters:
+    - df (pd.DataFrame): Input dataframe.
+    - groupby_col (list of str): Name(s) of column(s) that delineate groups. 
+    - measure_col (str): Name of column with measure that is to be z-scored.
+
+    Returns:
+    - df (pd.DataFrame): Output dataframe with the three statistics mentioned above:
+                         (EventIndex, TimeSinceLastEvent, TotalItemTime)
+    """
+    return df.groupby(groupby_col)[measure_col].transform(lambda x: (x - x.mean()) / x.std())
 
 
 
