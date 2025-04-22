@@ -1,0 +1,13 @@
+############### NEW CANVAS ###############
+newCanvas("(0, 1, 0, 0)", "10vw", "5vh").color("#4A86E8").print("35.0vw", "42.5vh"),newCanvas("(0, 1, 0, 1)", "10vw", "5vh").color("#FFE599").print("45.0vw", "42.5vh"),newCanvas("(0, 1, 0, 2)", "10vw", "5vh").color("#4A86E8").print("55.0vw", "42.5vh"),
+newCanvas("(0, 1, 1, 0)", "10vw", "5vh").color("#FFE599").print("35.0vw", "47.5vh"),newCanvas("(0, 1, 1, 1)", "10vw", "5vh").color("#4A86E8").print("45.0vw", "47.5vh"),newCanvas("(0, 1, 1, 2)", "10vw", "5vh").color("#FFE599").print("55.0vw", "47.5vh"),
+newCanvas("(0, 1, 2, 0)", "10vw", "5vh").color("#4A86E8").print("35.0vw", "52.5vh"),newCanvas("(0, 1, 2, 1)", "10vw", "5vh").color("#FFE599").print("45.0vw", "52.5vh"),newCanvas("(0, 1, 2, 2)", "10vw", "5vh").color("#4A86E8").print("55.0vw", "52.5vh"),
+
+
+
+
+
+############### GET CANVAS ###############
+getCanvas("(0, 1, 0, 0)"),getCanvas("(0, 1, 0, 1)"),getCanvas("(0, 1, 0, 2)"),
+getCanvas("(0, 1, 1, 0)"),getCanvas("(0, 1, 1, 1)"),getCanvas("(0, 1, 1, 2)"),
+getCanvas("(0, 1, 2, 0)"),getCanvas("(0, 1, 2, 1)"),getCanvas("(0, 1, 2, 2)"),
