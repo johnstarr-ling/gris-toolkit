@@ -29,6 +29,24 @@ A full list of customization options can be found by running:
 python canvas.py -h
 ```
 
+### `xlsx.py`
+`xlsx.py` reads in a drawn canvas (downloaded from a Google Sheets link like [this one](https://docs.google.com/spreadsheets/d/1sGGG7CWqjrYFazkx4lSACYk-2peZrUHPVDiLMJD4yDc/edit?usp=sharing)), extracts the color of each cel, and translates the cel to a Canvas object on PC Ibex. 
+
+You will need to specify the .xlsx file and the corresponding sheet. For example, if I have a file named `sample.xlsx` with a sheet called `helloworld`, then I can process this file by running the following command:
+
+```
+python xlsx.py -f sample.xlsx -s helloworld -o OUTPUT_NAME
+```
+
+As in `canvas.py`, you can specify various other features about the canvas, including: x and y bounds, the height of rows and the width of columns, etc. Run the following to see what you can tinker with:
+
+```
+python xlsx.py -h
+```
+
+These specifications are similar to those found in `canvas.py`.
+
+
 ### `colorize.py`
 `colorize.py` changes the colors for a set of `newCanvas` objects. The script reads in a file that contains `newCanvas` objects as strings and replaces the color. 
 

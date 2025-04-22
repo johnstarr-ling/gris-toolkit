@@ -39,8 +39,11 @@ Note that the `category-text` template can be extended into `category-shapes` or
 
 Also, the templates were designed with laptop functionality in mind. To support tablet use (or device general use), add the `autofit` flag when running `canvas.py`.
 
+### Draw your own canvas:
+If you'd prefer to *draw* your canvas, you can do so by filling in cels on the Google Sheet [here](https://docs.google.com/spreadsheets/d/1sGGG7CWqjrYFazkx4lSACYk-2peZrUHPVDiLMJD4yDc/edit?usp=sharing). Instructions for drawing these canvas are included on that link; instructions for how to process these drawn canvases with `xlsx.py` can be found in the `README.md` file in the `src` folder. 
+
 ### Customization with scripts:
-We strongly encourage you to build your experiment using one of the provided templates. Changes to objects (text, audio, image) are better done manually on PC Ibex; changes to the canvas are nearly always better using the `canvas.py` script (description below).
+We strongly encourage you to build your experiment using one of the provided templates or by drawing your own template using the Google Sheets link. Changes to objects (text, audio, image) are better done manually on PC Ibex; changes to the canvas are nearly always better using the `canvas.py` script (description below).
 
 Regardless, individual modifications to GRIS code can be made using the following scripts:
 - `canvas.py`: Build and modify your canvas(es).
