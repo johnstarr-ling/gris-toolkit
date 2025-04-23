@@ -20,7 +20,11 @@ If you have any questions or feature requests, please issue a pull request or co
 - variations on distance formula calculations
 
 ## Installation: <a name="installation"></a> | [back to top](#toc)
-The only required dependencies are `numpy` and `pandas`.
+Required dependencies are (minimally) `numpy` and `pandas`. If you want to use the full capabilities of GRIS, I encourage you to run the following in your virtual environment:
+
+```
+python -m pip install -r requirements.txt
+```
 
 ## Use: <a name="use"></a> | [back to top](#toc)
 
