@@ -15,12 +15,12 @@ This open-source toolkit builds GRIS experiments for [PC Ibex](https://doc.pcibe
 - [Citation](#citation)
 
 If you have any questions or feature requests, please issue a pull request or contact me at `jrs673@cornell.edu`. Some projects that are currently in development: 
-- an interactive GUI where you can draw your canvas (in a gridded, spreadsheet-like environment) and then run a quick script to build that canvas for PC Ibex.
 - additional templates (particularly some that automatically fit to the size of the screen you are working with)
 - variations on distance formula calculations
+- various representational transformations, such as Procrustes analyses
 
 ## Installation: <a name="installation"></a> | [back to top](#toc)
-Required dependencies are (minimally) `numpy` and `pandas`. If you want to use the full capabilities of GRIS, I encourage you to run the following in your virtual environment:
+Required dependencies are minimally `numpy` and `pandas`. If you want to use the full capabilities of GRIS (like the visualizer and the "draw your canvas on a spreadsheet" tools), I encourage you to run the following in your virtual environment:
 
 ```
 python -m pip install -r requirements.txt
