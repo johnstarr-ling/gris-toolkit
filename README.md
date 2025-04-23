@@ -60,7 +60,7 @@ More information about these scripts can be found in the `README` file within th
 
 
 ## Standard Pipeline: <a name="pipeline"></a> | [back to top](#toc)
-1. Build your GRIS from a template or using `canvas.py` | [gris-toolkit!]
+1. Build your GRIS from a template, from a spreadsheet "drawing", or by using `canvas.py` | [gris-toolkit!]
 2. Modify the PC Ibex script according to your desiderata | [on your own!]
 3. Run the experiment and download the data | [on your own!]
 4. Process the raw data using R | [gris toolkit!]
